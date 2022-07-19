@@ -10,6 +10,12 @@ router.get("/", async (req, res) => {
   res.send(bookList);
 });
 
+router.get('/:id',async(req, res) => {
+    let book = await Book.findOne(req.body);
+    if (book) return res.status(400).send(`Book found ${author}`);
+    
+});
+
 router.post("/", async (req, res) => {
   try {
     let book = await Book.findOne({ title: req.body.title });
